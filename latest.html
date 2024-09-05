@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilkSence Hair.com latest-Devlepment</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f0f0f0;
+        color: #333;
+    }
+
+    nav {
+        background-color: #000000;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        position: relative;
+
+    }
+
+    .logo {
+        margin-left: 10px;
+        display: block;
+
+    }
+
+    .logo img {
+        height: 110px;
+        width: auto;
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        color: #fff;
+        margin-right: 0;
+        position: relative;
+        top: 50px;
+
+    }
+
+    .menu-toggle span {
+        height: 3px;
+        width: 25px;
+        background-color: #fff;
+        margin: 5px 0;
+        display: block;
+    }
+
+    .close-icon {
+        font-size: 24px;
+        color: #fff;
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+
+    .menu-items {
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+        margin: 0 auto;
+
+    }
+
+    .menu-items li {
+        margin-left: 20px;
+        position: relative;
+    }
+
+    .menu-items li:first-child {
+        margin-left: 0;
+    }
+
+    .menu-items a {
+        text-decoration: none;
+        color: #fff;
+        font-family: "Abril Fatface", serif;
+        font-weight: 500;
+        font-size: 21px;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .menu-items a:hover {
+        color: #b9872c;
+    }
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        background-color: #b9872c;
+        padding: 10px;
+        top: calc(100% + 0px);
+        left: 0;
+        width: 200px;
+        z-index: 1;
+    }
+
+    .dropdown li {
+        margin: 5px 0;
+    }
+
+    .dropdown li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .dropdown li a:hover {
+        color: #333;
+    }
+
+    @media screen and (max-width: 768px) {
+        .menu-items {
+            display: none;
+            flex-direction: column;
+            align-items: baseline;
+
+            width: 100%;
+            text-align: left;
+
+            margin-left: 0;
+
+        }
+
+        .menu-items.active {
+            display: flex;
+        }
+
+        .menu-toggle {
+            display: flex;
+        }
+
+        .dropdown {
+            position: static;
+            display: block;
+            width: auto;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: #ff4545;
+            margin: 5px 0;
+        }
+
+        .menu-toggle span:nth-child(2) {
+            display: none;
+
+        }
+
+        .menu-toggle.open span:first-child {
+            transform: rotate(45deg);
+            margin-top: 8px;
+        }
+
+        .menu-toggle.open span:last-child {
+            transform: rotate(-45deg);
+            margin-top: -8px;
+        }
+
+        .close-icon {
+            font-size: 24px;
+            color: #ff4545;
+            display: none;
+
+        }
+
+        .menu-items.active+.close-icon {
+            display: block;
+
+        }
+
+        .menu-items.active .logo {
+            display: none;
+
+        }
+
+        .menu-items.active+.menu-toggle span {
+            display: none;
+
+        }
+    }
+
+
+    .carousel-item img {
+        width: 100vw;
+        height: 60vh;
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .card img {
+        min-width: 50%;
+        max-height: 200px;
+    }
+
+    p {
+        text-align: left;
+    }
+
+
+
+    .footer {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer-section {
+        flex: 1;
+        text-align: center;
+        max-width: 300px;
+        margin: 10px auto;
+
+    }
+
+    .footer-heading {
+        font-size: 20px;
+        margin-bottom: 10px;
+        display: flex;
+        text-align: center;
+        font-family: "Abril Fatface", serif;
+        color: #b9872c
+    }
+
+    .footer-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+
+    }
+
+    .footer-list li {
+        margin-bottom: 5px;
+        display: inline-block;
+
+    }
+
+    .footer-list a {
+        font-family: "Abril Fatface", serif;
+        font-weight: 800;
+        color: #535151;
+        text-decoration: none;
+        display: block;
+        padding: 2px 12px;
+
+    }
+
+    .footer-list a:hover {
+        color: #b9872c;
+        transition: color 0.3s ease;
+        text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+        .footer-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer-section:nth-child(1),
+        .footer-section:nth-child(2) {
+            flex-basis: calc(50% - 10px);
+        }
+
+        .footer-section:nth-child(3) {
+            flex-basis: 100%;
+        }
+
+        .footer-list li {
+            flex-basis: calc(50% - 10px);
+        }
+
+        .footer-section:nth-child(3) .footer-list li:nth-child(1),
+        .footer-section:nth-child(3) .footer-list li:nth-child(2),
+        .footer-section:nth-child(3) .footer-list li:nth-child(3) {
+            flex-basis: 100%;
+        }
+    }
+    #loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(222, 186, 108);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Ensure the loading screen is on top */
+}
+
+#loading img {
+    width: 300px;
+    height: 200px;
+}
+</style>
+
+<body>
+    <div id="loading">
+        <img src="img/loading.gif" alt="Loading...">
+    </div>
+
+
+    <nav>
+        <div class="logo"> <a href="index.html"><img src="img/SilkSenseHair3.png" alt=""></a></div>
+        <ul class="menu-items">
+            <li class="has-dropdown">
+                <a href="#">Home</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" onclick="toggleDropdown(0)">About</a>
+                <ul class="dropdown">
+                    <li><a href="latest.html">Latest Development</a></li>
+                    <li><a href="comparsion.html">Product Comparsion</a></li>
+
+                </ul>
+            </li>
+            <li class="has-dropdown">
+                <a class="has-dropdown " href="#gallery">Gallery</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" onclick="toggleDropdown(1)">Products</a>
+                <ul class="dropdown">
+                    <li><a href="shampoo.html">Shampoos</a></li>
+                    <li><a href="conditioner.html">Conditioners</a></li>
+                    <li><a href="haircream.html">Hair Creams </a></li>
+                    <li><a href="dryer.html">Hair Dryers </a></li>
+                    <li><a href="straightener.html">Straighteners</a></li>
+                    <li><a href="hairspray.html">Hair Sprays </a></li>
+                    <li><a href="steamers.html">Hair Steamers </a></li>
+                    <li><a href="massager.html">Hair Massagers </a></li>
+                    <li><a href="hairoil.html">Various Hair Oils</a></li>
+                </ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="treatment.html">Hairloss</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="graying.html">Graying</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="growth.html">Growth Related</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Premature Baldness</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="contactus.html">Contact-Us</a>
+            </li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="close-icon" onclick="toggleMenu()">×</span>
+    </nav>
+
+
+
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/ssl1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <section class="about my-5 " id="about">
+        <div class="container ">
+            <div class="text-center my-5 ">
+                <h1 data-aos="fade-up" data-aos-offset="200"> Latest <span class="text-warning"> Development</span></h1>
+                <hr class="w-25 m-auto">
+            </div>
+
+            <div class="row ">
+                <div class="col-sm col-md-6 col-lg-6 col-12" data-aos="zoom-in-down" data-aos-offset="200">
+                    <h3> <span class="text-warning">Hair rejuvenation</span> treatments employ advanced techniques like
+                        PRP therapy and low-level laser therapy (LLLT) to stimulate hair follicles, enhancing blood flow
+                        and promoting thicker, fuller hair growth. Additionally, procedures such as hair transplants
+                        provide long-lasting results, restoring natural hair density and confidence. These innovative
+                        methods offer effective solutions for individuals seeking to revitalize their hair and achieve a
+                        rejuvenated appearance.</h3>
+
+                </div>
+
+                <div class="col-sm col-md-6 col-lg-6 col-12 m-auto text-end" data-aos="fade-up"
+                    data-aos-duration="3000">
+                    <img src="img/idiv.webp" class="img-fluid img-tumbnail">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="about my-6  bg-light" id="about">
+        <div class="container py-5 ">
+            <div class="text-center my-5 ">
+                <h1 data-aos="fade-up" data-aos-offset="200">Laser Light Hair Rejuvenation Therapy with the Theradome
+                    </span></h1>
+                <hr class="w-75 m-auto">
+            </div>
+
+            <div class="row ">
+                <div class="col-sm col-md-6 col-lg-6 col-12 m-auto text-end" data-aos="fade-up"
+                    data-aos-duration="3000">
+                    <img src="img/vv.webp" class="img-fluid img-tumbnail">
+                </div>
+
+
+                <div class="col-sm col-md-6 col-lg-6 col-12" data-aos="zoom-in-down" data-aos-offset="200">
+                    <h3> The Theradome brings you the world’s most advanced laser hair growth treatment to enjoy from
+                        the comfort of your own home. Unlike Light Emitting Diodes (LEDs) devices, our laser light
+                        targets the stem cells at the base of hair follicles. This allows the formation of a new
+                        photonic pathway that can restore hair to a healthy state. Theradome® one-of-a-kind laser hair
+                        helmet was engineered based on the most powerful and efficacious laser hair rejuvenation therapy
+                        & hair growth treatment available.</h3>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="ing1 py-5 bg-light" id="ing">
+        <div class="container">
+            <div class="text-center " data-aos="fade-up" data-aos-offset="200">
+                <h1>Our <span class="text-warning">Treatments</span></h1>
+                <hr class="w-25 m-auto">
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-12" data-aos="fade-right" data-aos-offset="300">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img src="img/in1.webp" class="img-fluid  p-2">
+                            <h5 class="card-title">Peptide Injections</h5>
+                            <p class="card-text">Peptides are short chains of amino acids that can have various
+                                biological effects, including stimulating hair growth. Peptide injections may be used in
+                                hair rejuvenation therapy to promote hair growth and improve hair thickness.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4 col-12" data-aos="fade-down-right" data-aos-offset="200">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img src="img/in2.jpg" class="img-fluid  p-2">
+                            <h5 class="card-title">Biotin Injections</h5>
+                            <p class="card-text">Biotin deficiency has been directly associated with hair loss and
+                                brittle hair, therefore, is a common ingredient in many supplements for healthy hair.
+                                Biotin’s influence on healthy hair stems from its role in forming the amino acids that
+                                produce keratin. </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4 col-12 " data-aos="fade-up-right" data-aos-offset="200">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img src="img/in3.jpg" class="img-fluid  p-2">
+                            <h5 class="card-title">Otesaly Injection </h5>
+                            <p class="card-text">OTESALY Anti-hair loss solution is an effective mesotherapy treatment
+                                for hair loss that stimulates hair growth and stops hair loss.It is a proven and
+                                well-tolerated remedy for various forms of hair loss. Significant results after 1 or 2
+                                sessions. </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about my-6  bg-light" id="about">
+        <div class="container py-5 ">
+            <div class="text-center my-5 ">
+                <h1 data-aos="fade-up" data-aos-offset="200">BEFORE AND AFTER
+                    </span></h1>
+                <hr class="w-50 m-auto">
+            </div>
+
+            <div class="row ">
+                <div class="col-sm col-md-6 col-lg-6 col-12 m-auto text-end" data-aos="fade-up"
+                    data-aos-duration="3000">
+                    <img src="img/before.jpg" class="img-fluid img-tumbnail">
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-section">
+                <h3 class="footer-heading">SHOP BY CATEGORY</h3>
+                <ul class="footer-list">
+                    <li><a href="shampoo.html">Shampoo</a></li>
+                    <li><a href="conditioner.html">Conditioner</a></li>
+                    <li><a href="treatment.html">Hair Loss</a></li>
+                    <li><a href="haircream.html">Hair Cream</a></li>
+                    <li><a href="#">Spa caps</a></li>
+                    <li><a href="hair-serum.html">Serum</a></li>
+                    <li><a href="hair-mask.html">Hair Mask</a></li>
+                    <li><a href="hairspray.html">Hair Spray</a></li>
+                    <li><a href="hairoil.html">Various Hair Oils</a></li>
+                    <li><a href="comparsion.html">Comparsion</a></li>
+                </ul>
+
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading" style="color: #ff4545;">CUSTOMER SUPPORT</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="fAQs.html">FAQs</a></li>
+                    <li><a href="#">Shipping Rates</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Security Guarantee</a></li>
+                    <li><a href="#">Wholesale Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">MY ACCOUNT</h3>
+                <ul class="footer-list">
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Register Now</a></li>
+                </ul>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+
+        <script>
+
+            function toggleMenu() {
+                const menuItems = document.querySelector('.menu-items');
+                const toggleIcon = document.querySelector('.menu-toggle');
+                const closeIcon = document.querySelector('.close-icon');
+
+                if (menuItems.classList.contains('active')) {
+                    menuItems.classList.remove('active');
+                    toggleIcon.classList.remove('open');
+                    closeIcon.style.display = 'none';
+                    document.querySelector('.logo').style.display = 'block';
+                } else {
+                    menuItems.classList.add('active');
+                    toggleIcon.classList.add('open');
+                    closeIcon.style.display = 'block';
+                    document.querySelector('.logo').style.display = 'none';
+                }
+            }
+
+            function toggleDropdown(index) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach((dropdown, i) => {
+                    if (i === index) {
+                        if (window.innerWidth < 768) {
+                            if (dropdown.style.display === 'block') {
+                                dropdown.style.display = 'none';
+                            } else {
+                                dropdown.style.display = 'block';
+                            }
+                        }
+                    } else {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+
+
+            function openDropdownOnHover() {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                if (window.innerWidth >= 768) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.parentElement.addEventListener('mouseover', function () {
+                            dropdown.style.display = 'block';
+                        });
+                        dropdown.parentElement.addEventListener('mouseout', function () {
+                            dropdown.style.display = 'none';
+                        });
+                    });
+                }
+            }
+
+
+            document.addEventListener('mouseover', function (event) {
+                const menuItems = document.querySelector('.menu-items');
+                const targetElement = event.target;
+
+
+                if (!menuItems.contains(targetElement)) {
+                    const dropdowns = document.querySelectorAll('.dropdown');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                }
+            });
+
+
+            openDropdownOnHover();
+
+             // Function to hide the loading screen and show the website content
+    setTimeout(function () {
+    // Hide the loading screen
+    document.getElementById('loading').style.display = 'none';
+
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Show the website content
+    document.getElementById('content').style.display = 'block';
+}, 1000); // 5000 milliseconds = 5 seconds 
+
+
+        </script>
+</body>
+
+</html>

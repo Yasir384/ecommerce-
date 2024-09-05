@@ -1,0 +1,491 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* nav css */
+nav {
+    background-color: #000000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* To position the close icon */
+}
+
+.logo {
+    margin-left: 10px;
+    display: block;
+    /* Ensure logo is always visible */
+}
+
+.logo img {
+    height: 110px;
+    width: auto;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    color: #fff;
+    margin-right: 10px;
+    position: relative;
+    /* To position the close icon */
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 5px 0;
+    display: block;
+}
+
+.close-icon {
+    font-size: 24px;
+    color: #fff;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.menu-items {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    margin: 0 auto;
+    /* Center align the menu items */
+}
+
+.menu-items li {
+    margin-left: 20px;
+    position: relative;
+}
+
+.menu-items li:first-child {
+    margin-left: 0;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: #fff;
+    font-family: "Abril Fatface", serif;
+    font-weight: 500;
+    font-size: 21px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.menu-items a:hover {
+    color: #b9872c;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #b9872c;
+    padding: 10px;
+    top: calc(100% + 0px);
+    left: 0;
+    width: 200px;
+    z-index: 1;
+}
+
+.dropdown li {
+    margin: 5px 0;
+
+}
+
+.dropdown li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dropdown li a:hover {
+    color: #333;
+
+}
+
+@media screen and (max-width: 768px) {
+    .menu-items {
+        display: none;
+        flex-direction: column;
+        align-items: baseline;
+        /* Align items to the left */
+        width: 100%;
+        text-align: left;
+        /* Align text to the left */
+        margin-left: 0;
+        /* Reset margin */
+    }
+
+    .menu-items.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .dropdown {
+        position: static;
+        display: block;
+        width: auto;
+    }
+
+    .menu-toggle span {
+        height: 3px;
+        width: 25px;
+        background-color: #ff4545;
+        margin: 5px 0;
+    }
+
+    .menu-toggle span:nth-child(2) {
+        display: none;
+        /* Hide the middle span which represents the greater than icon */
+    }
+
+    .menu-toggle.open span:first-child {
+        transform: rotate(45deg);
+        margin-top: 8px;
+    }
+
+    .menu-toggle.open span:last-child {
+        transform: rotate(-45deg);
+        margin-top: -8px;
+    }
+
+    .close-icon {
+        font-size: 24px;
+        color: #ff4545;
+        display: none;
+        /* Hide the close icon by default */
+    }
+
+    .menu-items.active+.close-icon {
+        display: block;
+        /* Show the close icon when menu is active */
+    }
+
+    .menu-items.active .logo {
+        display: none;
+        /* Hide the logo when menu is active */
+    }
+
+    .menu-items.active+.menu-toggle span {
+        display: none;
+        /* Hide the toggle icon when menu is active */
+    }
+}
+
+/* nav css end */
+
+
+
+/* footer css */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: center;
+    /* Center align the content within each footer section */
+    max-width: 300px;
+    /* Adjust the width as needed */
+    margin: 10px auto;
+    /* Center the footer section horizontally */
+}
+
+.footer-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    font-family: "Abril Fatface", serif;
+    color: #b9872c
+}
+
+.footer-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    /* Center align the anchor links */
+}
+
+.footer-list li {
+    margin-bottom: 5px;
+    display: inline-block;
+    /* Display the list items inline */
+}
+
+.footer-list a {
+    font-family: "Abril Fatface", serif;
+    font-weight: 800;
+    color: #535151;
+    text-decoration: none;
+    display: block;
+    padding: 2px 12px;
+    /* Add padding to anchor links */
+}
+
+.footer-list a:hover {
+    color: #b9872c;
+    transition: color 0.3s ease;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .footer-list {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .footer-section:nth-child(1),
+    .footer-section:nth-child(2) {
+        flex-basis: calc(50% - 10px);
+    }
+
+    .footer-section:nth-child(3) {
+        flex-basis: 100%;
+    }
+
+    .footer-list li {
+        flex-basis: calc(50% - 10px);
+    }
+
+    .footer-section:nth-child(3) .footer-list li:nth-child(1),
+    .footer-section:nth-child(3) .footer-list li:nth-child(2),
+    .footer-section:nth-child(3) .footer-list li:nth-child(3) {
+        flex-basis: 100%;
+    }
+}
+
+/* footer css end */
+
+
+
+/* Additional CSS for the "Back to Top" button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #ff4545;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.back-to-top:hover {
+    background-color: white;
+    color: #ff4545;
+    border: 2px solid#ff4545;
+}
+
+.back-to-top.show {
+    display: block;
+}
+
+/* Styling for the FAQs heading */
+.faq-heading {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: black;
+    font-family: "Abril Fatface", serif;
+}
+
+/* Styling for individual FAQ sections */
+.faq-section {
+    margin-bottom: 30px;
+}
+
+.faq-section h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.faq-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.faq-section ul li {
+    margin-bottom: 15px;
+}
+
+.faq-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+
+
+    /* Center horizontally */
+}
+
+.faq-container a {
+    text-decoration: none;
+    color: #000;
+
+}
+
+h2 {
+    color: #000000;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Subheading styles */
+p.subheading {
+    font-weight: bold;
+    color: #666;
+    font-size: 18px;
+}
+
+/* Adjustments for mobile devices */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    p.subheading {
+        font-size: 16px;
+    }
+}
+
+.customer-support-container {
+    position: absolute;
+    top: 150px;
+    /* Adjust as needed based on your navigation bar's height */
+    left: 20px;
+    /* Adjust the left distance as needed */
+    border: 2px solid #333;
+    /* Add border to the customer support section */
+    padding: 20px;
+    /* Add padding to the customer support section */
+}
+
+.customer-support-container h2,
+.customer-support-container p.subheading {
+    border-bottom: 1px solid #333;
+    /* Add border between headings and content */
+    padding-bottom: 10px;
+    /* Add padding between headings and content */
+    background-color: black;
+    color: white;
+}
+
+.customer-support-container p.subheading {
+    border-bottom: 1px solid #333;
+    /* Add border between headings and content */
+    padding-bottom: 10px;
+    /* Add padding between headings and content */
+    background-color: #333;
+    color: white;
+    display: flex;
+}
+
+
+.customer-support-container ul {
+    padding-left: 20px;
+    /* Add left padding to the unordered list */
+}
+
+.customer-support-container ul li {
+    border-bottom: 1px solid #000000;
+    /* Add border between list items */
+    padding: 5px 0;
+    /* Add padding to list items */
+
+}
+
+.customer-support-container ul li:last-child {
+    border-bottom: none;
+    /* Remove border from the last list item */
+}
+
+.customer-support-container a {
+    text-decoration: none;
+    color: #000000;
+}
+
+@media screen and (max-width: 768px) {
+    .customer-support-container {
+        position: relative;
+        /* Change position to relative */
+        top: 0;
+        /* Remove top positioning */
+        left: 0;
+        /* Remove left positioning */
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        /* Add margin to separate it from the FAQ section */
+        padding: 20px;
+        /* Add padding to the customer support section */
+    }
+}
+
+a:hover {
+    color: #ff4545;
+
+}
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(222, 186, 108);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Ensure the loading screen is on top */
+}
+
+#loading img {
+    width: 300px;
+    height: 200px;
+}

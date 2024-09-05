@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilkSense Hair-Growth</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="icon" href="img/title logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+
+
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f0f0f0;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+
+    nav {
+        background-color: #000000;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .logo img {
+        height: 110px;
+        width: auto;
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        color: #fff;
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .menu-toggle span {
+        height: 3px;
+        width: 25px;
+        background-color: #fff;
+        margin: 5px 0;
+        display: block;
+    }
+
+    .close-icon {
+        font-size: 24px;
+        color: #fff;
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+
+    .menu-items {
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .menu-items li {
+        margin-left: 20px;
+        position: relative;
+    }
+
+    .menu-items li:first-child {
+        margin-left: 0;
+    }
+
+    .menu-items a {
+        text-decoration: none;
+        color: #fff;
+        font-family: "Abril Fatface", serif;
+        font-weight: 500;
+        font-size: 21px;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .menu-items a:hover {
+        color: #b9872c;
+    }
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        background-color: #b9872c;
+        padding: 10px;
+        top: calc(100% + 0px);
+        left: 0;
+        width: 200px;
+        z-index: 1;
+    }
+
+    .dropdown li {
+        margin: 5px 0;
+    }
+
+    .dropdown li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .dropdown li a:hover {
+        color: #333;
+    }
+
+    @media screen and (max-width: 768px) {
+        .menu-items {
+            display: none;
+            flex-direction: column;
+            align-items: baseline;
+            width: 100%;
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .menu-items.active {
+            display: flex;
+        }
+
+        .menu-toggle {
+            display: flex;
+        }
+
+        .dropdown {
+            position: static;
+            display: block;
+            width: auto;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: #ff4545;
+            margin: 5px 0;
+        }
+
+        .menu-toggle span:nth-child(2) {
+            display: none;
+        }
+
+        .menu-toggle.open span:first-child {
+            transform: rotate(45deg);
+            margin-top: 8px;
+        }
+
+        .menu-toggle.open span:last-child {
+            transform: rotate(-45deg);
+            margin-top: -8px;
+        }
+
+        .close-icon {
+            font-size: 24px;
+            color: #ff4545;
+            display: none;
+        }
+
+        .menu-items.active+.close-icon {
+            display: block;
+        }
+
+        .menu-items.active .logo {
+            display: none;
+        }
+
+        .menu-items.active+.menu-toggle span {
+            display: none;
+        }
+    }
+
+
+    .footer {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer-section {
+        flex: 1;
+        text-align: center;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+
+    .footer-heading {
+        font-size: 20px;
+        margin-bottom: 10px;
+        display: flex;
+        text-align: center;
+        font-family: "Abril Fatface", serif;
+        color: #b9872c;
+    }
+
+    .footer-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    .footer-list li {
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+    .footer-list a {
+        font-family: "Abril Fatface", serif;
+        font-weight: 800;
+        color: #535151;
+        text-decoration: none;
+        display: block;
+        padding: 2px 12px;
+    }
+
+    .footer-list a:hover {
+        color: #b9872c;
+        transition: color 0.3s ease;
+        text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+        .footer-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer-section:nth-child(1),
+        .footer-section:nth-child(2) {
+            flex-basis: calc(50% - 10px);
+        }
+
+        .footer-section:nth-child(3) {
+            flex-basis: 100%;
+        }
+
+        .footer-list li {
+            flex-basis: calc(50% - 10px);
+        }
+
+        .footer-section:nth-child(3) .footer-list li:nth-child(1),
+        .footer-section:nth-child(3) .footer-list li:nth-child(2),
+        .footer-section:nth-child(3) .footer-list li:nth-child(3) {
+            flex-basis: 100%;
+        }
+    }
+
+
+    header {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    h1 {
+        font-size: 36px;
+        color: #333;
+        font-size: 60px;
+        font-weight: 900;
+        font-family: "Dancing Script", cursive;
+        color: #b9872c;
+    }
+
+
+    .slider-container {
+        margin: 20px auto;
+        max-width: 1300px;
+
+        height: 260px;
+    }
+
+    .slider {
+        display: flex;
+        margin-bottom: 20px;
+
+    }
+
+    .slider img {
+        flex: 0 0 auto;
+        width: 289px;
+        height: 180px;
+        padding-right: 57px;
+        padding-left: 62px;
+        border-radius: 50%;
+    }
+
+    .slick-prev,
+    .slick-next {
+        font-size: 0px;
+        color: #ff4545;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .slick-prev {
+        left: 0;
+    }
+
+    .slick-next {
+        right: 0;
+    }
+
+
+    .product-cards-container {
+        margin: 0 auto;
+        max-width: 1200px;
+
+        margin-bottom: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        align-items: center;
+    }
+
+    .product-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(22, 22, 22, 0.5);
+
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 225px;
+        border-radius: 8px;
+
+    }
+
+    .product-card h2 {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #b9872c;
+        height: 61px;
+    }
+
+    .product-card p {
+        color: #666;
+
+        position: relative;
+        top: 38px;
+        color: #b9872c;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        width: fit-content;
+    }
+
+    .product-card button {
+        display: block;
+        width: 40%;
+        padding: 10px 0;
+        margin-top: 10px;
+        background-color: white;
+        color: #ff4545;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        float: right;
+        border: 2px solid #ff4545;
+    }
+
+    .product-card button:hover {
+        background-color: #ff4545;
+        color: white;
+        border: 2px solid white;
+    }
+
+
+    @media (max-width: 1200px) {
+        .product-cards-container {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        .product-cards-container {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .slider-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .slider {
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .product-cards-container {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 45px;
+        }
+    }
+
+    .slider-img-name1 {
+        padding-left: 112px;
+        font-size: 20px;
+        font-weight: 900;
+        font-family: "Dancing Script", cursive;
+        color: #ff4545;
+        margin-top: 9px;
+        width: fit-content;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        font-family: 'slick';
+        font-size: 20px;
+        line-height: 1;
+
+        opacity: .75;
+        color: #ff4545;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    #loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(222, 186, 108);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Ensure the loading screen is on top */
+}
+
+#loading img {
+    width: 300px;
+    height: 200px;
+}
+</style>
+
+<body>
+    <div id="loading">
+        <img src="img/loading.gif" alt="Loading...">
+    </div>
+    <nav>
+        <div class="logo"><a href="index.html"><img src="img/SilkSenseHair3.png" alt=""></a></div>
+        <ul class="menu-items">
+            <li class="has-dropdown">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" onclick="toggleDropdown(0)">About</a>
+                <ul class="dropdown">
+                    <li><a href="latest.html">Latest Development</a></li>
+                    <li><a href="comparsion.html">Product Comparsion</a></li>
+
+                </ul>
+            </li>
+            <li class="has-dropdown">
+                <a class="has-dropdown " href="#gallery">Gallery</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" onclick="toggleDropdown(1)">Products</a>
+                <ul class="dropdown">
+                    <li><a href="shampoo.html">Shampoos</a></li>
+                    <li><a href="conditioner.html">Conditioners</a></li>
+                    <li><a href="haircream.html">Hair Creams </a></li>
+                    <li><a href="dryer.html">Hair Dryers </a></li>
+                    <li><a href="straightener.html">Straighteners</a></li>
+                    <li><a href="hairspray.html">Hair Sprays </a></li>
+                    <li><a href="steamers.html">Hair Steamers </a></li>
+                    <li><a href="massager.html">Hair Massagers </a></li>
+                    <li><a href="hairoil.html">Various Hair Oils</a></li>
+
+                </ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="treatment.html">Hairloss</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="graying.html">Graying</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="growth.html">Growth Related</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Premature Baldness</a>
+            </li>
+            <li class="has-dropdown">
+                <a href="contactus.html">Contact-Us</a>
+            </li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="close-icon" onclick="toggleMenu()">×</span>
+    </nav>
+
+    <header>
+        <h1 data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500"
+            data-aos-offset="300">Growth Related</h1>
+    </header>
+
+
+    <div class="slider-container">
+        <div class="slider center">
+            <div><img src="cardsimages/hl02.jpg" alt="Slide 1">
+                <h5 class="slider-img-name1"> </h5>
+            </div>
+            <div><img src="cardsimages/hl04.jpg" alt="Slide 3">
+                <h5 class="slider-img-name1"> </h5>
+            </div>
+            <div><img src="cardsimages/hl05.avif" alt="Slide 3">
+                <h5 class="slider-img-name1"></h5>
+            </div>
+            <div><img src="cardsimages/hl06.jpg" alt="Slide 3">
+                <h5 class="slider-img-name1"> </h5>
+            </div>
+            <div><img src="cardsimages/hl01.jpg" alt="Slide 3">
+                <h5 class="slider-img-name1"> </h5>
+            </div>
+            <div><img src="cardsimages/hl03.jpg" alt="Slide 3">
+                <h5 class="slider-img-name1"></h5>
+            </div>
+
+        </div>
+        <hr>
+    </div>
+    <div class="product-cards-container">
+
+        <div class="product-card">
+            <img src="cardsimages/treat1.webp" alt="hair treatment" data-aos="fade-up">
+            <h2>Color Wow <br>Dream Cocktail Carb-Infused Hair Treatment</h2>
+            <div>
+                <div>
+                    <p>$10.00</p>
+                </div>
+                <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="cardsimages/treat2.jpg" alt="hair treatment" data-aos="fade-up">
+            <h2>Nioxin <br>
+
+                System 3 Scalp & Hair Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat3.jpg" alt="hair treatment" data-aos="fade-up">
+            <h2>Agadir <br>
+
+                Argan Oil Hair Shield 450 Spray Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat4.webp" alt="hair treatment" data-aos="fade-up">
+            <h2>Bosley <br>Bosleymd Hair Regrowth Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat5.png" alt="hair treatment" data-aos="fade-down" data-aos-offset="200">
+            <h2>Living Proof <br>Perfect Hair Day 5-In-1 Styling Treatment </h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat6.jpg" alt="hair treatment" data-aos="fade-down" data-aos-offset="200">
+            <h2>Chi <br>Power Plus Revitalize Vitamin Hair & Scalp Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat7.webp" alt="hair treatment" data-aos="fade-down" data-aos-offset="200">
+            <h2>Redken <br> Extreme Cat Anti-Damage Protein Reconstructing Rinse-Off Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat8.jpg" alt="hair treatment" data-aos="fade-down" data-aos-offset="200">
+            <h2>Sachajuan <br>Over Night Hair Repair Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="cardsimages/treat9.webp" alt="hair treatment" data-aos="fade-left" data-aos-offset="300">
+            <h2>Deva <br>
+                Heaven In Hair Intense Moisture Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="cardsimages/treat10.jpg" alt="hair treatment" data-aos="fade-left" data-aos-offset="300">
+            <h2>Nioxin <br>Minoxidil Topical Solution Usp 2% Hair Regrowth Treatment Unscented</h2>
+            <p>$15.00</p>
+            <button>Add to Cart</button>
+        </div>
+
+
+        <div class="product-card">
+            <img src="cardsimages/treat11.webp" alt="hair treatment" data-aos="fade-left" data-aos-offset="300">
+            <h2>Virtue <br> Flourish Nightly Intensive Hair Growth Treatment 3 Month</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="cardsimages/treat12.jpg" alt="hair treatment" data-aos="fade-left" data-aos-offset="300">
+            <h2> Phyto <br>Phyto Re30 Anti-Grey Hair Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+    </div>
+
+    <div class="productpage-img" style=" margin-top: 10px; margin-bottom: 20px; margin-left: 40px;margin-right: 40px;">
+        <div>
+            <img src="cardsimages/Card 7.png" alt="" style="width: 100%; margin-top: 3px;
+            margin-bottom: 3px;
+            padding-left: 15px;padding-right: 15px;" data-aos="zoom-in" data-aos-offset="200">
+        </div>
+    </div>
+
+    <div class="product-cards-container">
+
+        <div class="product-card">
+            <img src="cardsimages/treat13.webp" alt="hair treatment" data-aos="zoom-in-left" data-aos-offset="200">
+            <h2>Eleven Australia <br>Miracle Hair Spray Treatment</h2>
+            <div>
+                <div>
+                    <p>$10.00</p>
+                </div>
+                <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="cardsimages/treat14.webp" alt="hair treatment" data-aos="zoom-in-left" data-aos-offset="200">
+            <h2>Oribe <br>Hair Alchemy Resilience Fortifying Treatment Serum</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat15.webp" alt="hair treatment" data-aos="zoom-in-left" data-aos-offset="200">
+            <h2>Sexy Hair <br> Healthy Sexy Hair Soy Tri-Wheat Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat16.webp" alt="hair treatment" data-aos="zoom-in-left" data-aos-offset="200">
+            <h2>Elvis + Elvin <br>Restoration Hair Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat17.jpg" alt="hair treatment" data-aos="zoom-out" data-aos-offset="200">
+            <h2>Redken <br>One United All-In-One Multi Benefit Treatment </h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat18.webp" alt="hair treatment" data-aos="zoom-out" data-aos-offset="200">
+            <h2>Sebastian <br>Potion 9 Wearable Treatment To Restore And Restyle With Pump</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat19.webp" alt="hair treatment" data-aos="zoom-out" data-aos-offset="200">
+            <h2>Toppik <br>Hair Building Fibers Dark Brown-Giant 55g/</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+        <div class="product-card">
+            <img src="cardsimages/treat20.webp" alt="hair treatment" data-aos="zoom-out" data-aos-offset="200">
+            <h2>Nioxin <br>Night Density Rescue Treatment</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="img/treatment1.webp" alt="hair treatment" data-aos="zoom-out-down" data-aos-offset="200">
+            <h2>Tea Tree Treatment <br>
+                "7 Seconds Detangler Leave-In treated."</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="img/treatment2.jpg" alt="hair treatment" data-aos="zoom-out-down" data-aos-offset="200">
+            <h2>Biosilk <br>
+                "Biosilk for Silk & soomth Therapy."</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="img/treatment4.jpg" alt="hair treatment" data-aos="zoom-out-down" data-aos-offset="200">
+            <h2>Nioxin <br>
+                "Bionutrient Actives Scalp Therapy Conditioner System 2."</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+
+        <div class="product-card">
+            <img src="img/treatment3.jpg" alt="hair treatment" data-aos="zoom-out-down" data-aos-offset="200">
+            <h2>Bosley <br>
+                "Healthy Hair Follicle Nourisher Intensive Leave-In Scalp Primer."</h2>
+            <p>$15.00</p>
+            <a href="credit.html"><button class="buy-btn">Buy Now</button></a>
+        </div>
+
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-section">
+            <h3 class="footer-heading">SHOP BY CATEGORY</h3>
+            <ul class="footer-list">
+                <li><a href="shampoo.html">Shampoo</a></li>
+                <li><a href="conditioner.html">Conditioner</a></li>
+                <li><a href="treatment.html">Hair Loss</a></li>
+                <li><a href="haircream.html">Hair Cream</a></li>
+                <li><a href="#">Spa caps</a></li>
+                <li><a href="hair-serum.html">Serum</a></li>
+                <li><a href="hair-mask.html">Hair Mask</a></li>
+                <li><a href="hairspray.html">Hair Spray</a></li>
+                <li><a href="hairoil.html">Various Hair Oils</a></li>
+                <li><a href="comparsion.html">Comparsion</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading" style="color: #ff4545;">CUSTOMER SUPPORT</h3>
+            <ul class="footer-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="fAQs.html">FAQs</a></li>
+                <li><a href="#">Shipping Rates</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Security Guarantee</a></li>
+                <li><a href="#">Wholesale Information</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading">MY ACCOUNT</h3>
+            <ul class="footer-list">
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Order Status</a></li>
+                <li><a href="#">Register Now</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <script>
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            const toggleIcon = document.querySelector('.menu-toggle');
+            const closeIcon = document.querySelector('.close-icon');
+
+            if (menuItems.classList.contains('active')) {
+                menuItems.classList.remove('active');
+                toggleIcon.classList.remove('open');
+                closeIcon.style.display = 'none';
+                document.querySelector('.logo').style.display = 'block'; // Show logo when closing menu
+            } else {
+                menuItems.classList.add('active');
+                toggleIcon.classList.add('open');
+                closeIcon.style.display = 'block';
+                document.querySelector('.logo').style.display = 'none'; // Hide logo when opening menu
+            }
+        }
+
+        function toggleDropdown(index) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach((dropdown, i) => {
+                if (i === index) {
+                    if (window.innerWidth < 768) { // Check if the screen size is smaller than 768px
+                        if (dropdown.style.display === 'block') {
+                            dropdown.style.display = 'none';
+                        } else {
+                            dropdown.style.display = 'block';
+                        }
+                    }
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            });
+        }
+
+        // Open dropdowns on hover for larger screens
+        function openDropdownOnHover() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            if (window.innerWidth >= 768) { // Check if the screen size is larger than or equal to 768px
+                dropdowns.forEach(dropdown => {
+                    dropdown.parentElement.addEventListener('mouseover', function () {
+                        dropdown.style.display = 'block';
+                    });
+                    dropdown.parentElement.addEventListener('mouseout', function () {
+                        dropdown.style.display = 'none';
+                    });
+                });
+            }
+        }
+
+        // Close dropdowns when cursor moves outside of menu area on larger screens
+        document.addEventListener('mouseover', function (event) {
+            const menuItems = document.querySelector('.menu-items');
+            const targetElement = event.target; // Element where the cursor is currently over
+
+            // Check if the cursor is outside of the menu area
+            if (!menuItems.contains(targetElement)) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+
+        // Call the function to open dropdowns on hover
+        openDropdownOnHover();
+
+
+
+        $('.center').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 4,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: true,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+
+
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+         // Function to hide the loading screen and show the website content
+    setTimeout(function () {
+    // Hide the loading screen
+    document.getElementById('loading').style.display = 'none';
+
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Show the website content
+    document.getElementById('content').style.display = 'block';
+}, 1000); // 5000 milliseconds = 5 seconds 
+    </script>
+
+
+
+
+</body>
+
+</html>
